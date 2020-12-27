@@ -9,6 +9,7 @@ RUN apt-get install cmake -y
 RUN apt-get install git -y
 RUN apt-get install curl -y
 RUN apt-get install zip -y
+RUN apt-get install gdb -y
 
 #install vcpkg package manager
 RUN git clone https://github.com/microsoft/vcpkg
