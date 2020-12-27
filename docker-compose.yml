@@ -1,0 +1,13 @@
+#goapp
+
+version: '3.4'
+services:
+  cppapp:
+    entrypoint: /bin/bash
+    build:
+      context: .
+      dockerfile: Dockerfile
+    command:  -c "tail -f /dev/null"
+    user: root
+    volumes:
+      - ./:/Project
