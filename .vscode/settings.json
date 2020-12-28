@@ -1,4 +1,4 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
-    "cmake.configureSettings": {"CMAKE_PREFIX_PATH": "/vcpkg/packages/sqlite3_x64-linux/"},
+    
 }
