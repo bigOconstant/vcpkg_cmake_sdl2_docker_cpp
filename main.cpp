@@ -24,7 +24,7 @@ int main() try {
    SDL sdl(SDL_INIT_VIDEO);
 
 	// Create main window: 640x480 dimensions, resizable, "SDL2pp demo" title
-	Window window("SDL2pp demo",
+	Window window("Blah Blah Blah",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			640, 480,
 			SDL_WINDOW_RESIZABLE);
@@ -33,9 +33,19 @@ int main() try {
 	Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 
 	// Load sprites image as a new texture
+	SDL2pp::Point start,end;
+	start.SetX(0);
+	start.SetY(10);
+
+	start.SetX(400);
+	start.SetY(10);
+	
+	SDL2pp::Color c(255,255,255);
+	renderer.SetDrawColor(c);
+	renderer.DrawLine(10,0,10,640);
 
 	// Clear screen
-	renderer.Clear();
+	//renderer.Clear();
 
 
 
@@ -43,7 +53,7 @@ int main() try {
 	renderer.Present();
 
 	// 5 second delay
-	SDL_Delay(5000);
+	SDL_Delay(10000);
 
 	// Here all resources are automatically released and library deinitialized
 	return 0;
