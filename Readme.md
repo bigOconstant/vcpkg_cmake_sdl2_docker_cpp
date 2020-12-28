@@ -1,6 +1,6 @@
 ## CMake vcpkg vscode remote container example project
 
-Demonstrates how to build a sdl2 project with vcpkg and cmake. Should theoritically work in windows. The sdl files import statically.
+Demonstrates how to build a sdl2 project with vcpkg and cmake. Should theoritically work in windows. The sdl files import statically. Just not with docker but the docker files as a reference.
 ## Dependencies
 VSCode, Docker,Docker compose, and the Remote-Containers plugin
 
