@@ -1,5 +1,3 @@
-#goapp
-
 version: '3.4'
 services:
   cppapp:
@@ -7,7 +5,9 @@ services:
     build:
       context: .
       dockerfile: Dockerfile
-    command:  -c "tail -f /dev/null"
-    user: root
+      args:
+        - USERNAME=caleb
+    command:  -c "sleep infinity"
+    user: caleb
     volumes:
       - ./:/Project

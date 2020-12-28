@@ -3,5 +3,6 @@
     "files.associations": {
         "exception": "cpp"
     },
+    "terminal.integrated.shell.linux": "/bin/bash",
     
 }
