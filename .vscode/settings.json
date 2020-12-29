@@ -1,7 +1,9 @@
 {
     "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
     "files.associations": {
-        "exception": "cpp"
+        "exception": "cpp",
+        "iostream": "cpp",
+        "random": "cpp"
     },
     "terminal.integrated.shell.linux": "/bin/bash",
     
