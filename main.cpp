@@ -16,6 +16,7 @@ make
  */
 
 void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius){
+	SDL2pp::Color yellow = SDL2pp::Color(226,132,14);
 	int startx = x - radius;
 	if (startx < 0){
 		startx = 0;
@@ -24,19 +25,22 @@ void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius){
 	if (starty < 0){
 		starty = 0;
 	}
+	/* Loop over a square of possible pixils */
 	for(int i = startx; i < x + radius; ++i) {
 		for(int j = starty; j < y + radius; ++j) {
 			auto izero = i - x;
-			auto jzero = j -y;
+			auto jzero = j - y;
+			// Basic circle drawing algorithm.
 			auto destination = ((izero*izero) + (jzero*jzero)) - (radius * radius);
-			if(destination <= 0){
+			
+			/* If less than zero in circle, if zero on paremeter, if greator than zero not in circle */
+			if(destination <= 0) {
+				input.SetDrawColor(yellow);
 				input.DrawPoint(i,j);
 			}
 		}
 
 	}
-
-	
 }
 
 int main() {
@@ -50,7 +54,7 @@ try {
 	// Create main window: 640x480 dimensions, resizable, "SDL2pp demo" title
 	Window window("Blah Blah Blah",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			640, 480,
+			1280, 720,
 			SDL_WINDOW_RESIZABLE);
 
 	// Create accelerated video renderer with default driver
@@ -59,7 +63,7 @@ try {
 	auto posx = 0;
 	SDL_Event e;
 	auto start = SDL_GetTicks();
-	auto mover = 1;
+	auto mover = 2;
 	while (running) {
 		while(SDL_PollEvent(&e) != 0) {
 			auto ms = SDL_GetTicks();
@@ -85,7 +89,7 @@ try {
 			if ((ticks - start) > 50){
 				posx = posx +mover;
 				start = ticks;
-				if (posx > 479 || posx <0) {
+				if (posx > 720 || posx <0) {
 					mover = mover * -1;
 					
 				}
@@ -107,7 +111,7 @@ try {
 			renderer.SetDrawColor(c);
 			renderer.DrawLine(10,0,10,posx);
 
-			drawCircle(renderer,50,50,20);
+			drawCircle(renderer,posx,60,40);
 
 			
 			
