@@ -1,4 +1,4 @@
- #include "board.h"
+#include "board.h"
 
  void Board::drawGrid(SDL2pp::Renderer &input,int width,int height) {
             int w = width /15;
