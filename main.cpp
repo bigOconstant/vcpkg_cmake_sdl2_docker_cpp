@@ -43,18 +43,31 @@ void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius){
 	}
 }
 
+void drawGrid(SDL2pp::Renderer &input,int width,int height) {
+	int w = width /15;
+	for (int i = 2; i < 13; ++i){
+		input.DrawLine(w * i,w,w * i,w * 8);
+	}
+
+	for(int i = w; i <= height; i = i + w){
+		input.DrawLine(w*2,i,12 * w,i);
+	}
+
+}
+
 int main() {
 try {
     cout<<"starting app"<<endl;
     cout<< sqlite3_libversion()<<endl;
-
+	int width = 1280;
+	int height = 720;
     
    	SDL sdl(SDL_INIT_VIDEO);
 	
 	// Create main window: 640x480 dimensions, resizable, "SDL2pp demo" title
 	Window window("Blah Blah Blah",
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
-			1280, 720,
+			width, height,
 			SDL_WINDOW_RESIZABLE);
 
 	// Create accelerated video renderer with default driver
@@ -111,18 +124,9 @@ try {
 			renderer.SetDrawColor(c);
 			renderer.DrawLine(10,0,10,posx);
 
-			drawCircle(renderer,posx,60,40);
-
-			
-			
-			
-			
-			
-
-			// Clear screen
-			
-
-
+			drawCircle(renderer,posx,60,((width /15)/2)-10);
+			renderer.SetDrawColor(c);
+			drawGrid(renderer, width, height);
 
 			// Show rendered frame
 			renderer.Present();
