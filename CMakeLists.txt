@@ -16,9 +16,9 @@ find_package(sdl2-image CONFIG REQUIRED)
 
 
 
-add_executable(main main.cpp board.cpp game.cpp)
+add_executable(main main.cpp board.cpp game.cpp player.cpp)
 
-target_include_directories(main PRIVATE ${SDL2PP_INCLUDE_DIRS} board.h game.h)
+target_include_directories(main PRIVATE ${SDL2PP_INCLUDE_DIRS} board.h game.h player.h primitives.h)
 
 
 target_link_libraries(main PRIVATE unofficial::sqlite3::sqlite3

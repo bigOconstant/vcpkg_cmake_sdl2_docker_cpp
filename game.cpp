@@ -1,9 +1,10 @@
 #include "game.h"
+#include "player.h"
 //#include "iostream"
 
 Game::Game(){
-    width = 1280;
-    height = 720;
+    width = 768;
+    height = 480;
     B = std::unique_ptr<Board>();
 };
 
@@ -22,15 +23,21 @@ void Game::run() {
 			SDL_WINDOWPOS_UNDEFINED, SDL_WINDOWPOS_UNDEFINED,
 			width, height,
 			SDL_WINDOW_RESIZABLE);
+			//SDL_WINDOW_FULLSCREEN);
 
+	
+	Player *Pacman = new Player(width);
     SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
+	
 	auto running = true;
-	auto posx = 0;
+	auto posx = 175;
+	auto posy = 255;
 	SDL_Event e;
 	auto start = SDL_GetTicks();
 	auto mover = 2;
 	while (running) {
 		while(SDL_PollEvent(&e) != 0) {
+			//
 			auto ms = SDL_GetTicks();
 		//User requests quit
 			if( e.type == SDL_QUIT )
@@ -45,26 +52,24 @@ void Game::run() {
 					std::cout<<ms<<endl;
 				}
 			}else if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
-                int x = 0;
-                int y = 0;
-                SDL_GetMouseState(&x,
-                         &y);
-
+                SDL_GetMouseState(&posx,
+                         &posy);
+				Pacman->setPosition(posx,posy);
                 SDL_Log("Mouse Button 1 (left) is pressed.");
-                cout<<"x:"<<x<<" y:"<<y<<endl;
+                cout<<"x:"<<posx<<" y:"<<posy<<endl;
             }
 
 		}
 
-			auto ticks = SDL_GetTicks();
-			if ((ticks - start) > 50){
-				posx = posx +mover;
-				start = ticks;
-				if (posx > 720 || posx <0) {
-					mover = mover * -1;
+			// auto ticks = SDL_GetTicks();
+			// if ((ticks - start) > 50){
+			// 	posx = posx +mover;
+			// 	start = ticks;
+			// 	if (posx > 720 || posx <0) {
+			// 		mover = mover * -1;
 					
-				}
-			}
+			// 	}
+			// }
 
 			SDL2pp::Color c = SDL2pp::Color(0,0,0);
 			renderer.SetDrawColor(c);
@@ -72,14 +77,28 @@ void Game::run() {
 
 			c = SDL2pp::Color(255,255,255);
 			renderer.SetDrawColor(c);
-			renderer.DrawLine(10,0,10,posx);
-
-			B->drawCircle(renderer,posx,60,((width /15)/2)-10);
+			Pacman->draw(renderer);
+			//B->drawCircle(renderer,posx,posy,((width /15)/2)-10);
 			renderer.SetDrawColor(c);
-			B->drawGrid(renderer, width, height);
+			B->drawGrid(renderer, width,height);
+			
+			auto ticks = SDL_GetTicks();
+			// if ((ticks - start) > 50){
+			// 	posx = posx +mover;
+			// 	start = ticks;
+			// 	if (posx > 720 || posx <0) {
+			// 		mover = mover * -1;
+					
+			// 	}
+			// }th, height);
 
 			// Show rendered frame
+			
 			renderer.Present();
+			height = window.GetHeight();
+			width = window.GetWidth();
+			
+			
 	 
 	}
 	// 5 second delay
