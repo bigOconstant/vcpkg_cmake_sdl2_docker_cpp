@@ -8,19 +8,27 @@ struct Cell {
     bool east;
     bool west;
 
-    Cell(){
+    Cell() {
         north = false,south = false,east = false,west = false;
     }
 };
-
+struct Point {
+    int row;
+    int col;
+    bool OnGrid;
+};
 class Board {
     private:
         Cell **board;
         int rowCount;
         int columnCount;
+        int width;
+        int height;
 
     public:
-        Board(){
+        Board(int w, int h){
+            width = w;
+            height = h;
             rowCount = 7;
             columnCount = 10;
             board = new Cell*[rowCount];
@@ -35,7 +43,7 @@ class Board {
             }
             delete board;
         }
+        
         void drawGrid(SDL2pp::Renderer &input,int width,int height);
-        void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius);
-
+        Point GetCellForXAndY(int x, int y);
 };

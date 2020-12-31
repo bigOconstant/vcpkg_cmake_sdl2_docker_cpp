@@ -3,9 +3,10 @@
 
 
 Player::Player(int width) {
-    posx = 0;
-    posy = 0;
+    
     radius = ((width/15)/2) -10;
+    posx = radius;
+    posy = radius;
 };
 
 void Player::draw(SDL2pp::Renderer &input) {

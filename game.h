@@ -7,8 +7,9 @@ class Game {
     private:
         int height;
         int width;
-        std::unique_ptr<Board> B;
+        Board *B;
     public:
         Game();
+        ~Game();
         void run();
 };

@@ -3,9 +3,14 @@
 //#include "iostream"
 
 Game::Game(){
-    width = 768;
-    height = 480;
-    B = std::unique_ptr<Board>();
+    // width = 768;
+    // height = 480;
+      width = 1280;
+     height = 720;
+    B = new Board(width,height);
+};
+Game::~Game(){
+    delete B;
 };
 
 void Game::run() {
@@ -54,9 +59,13 @@ void Game::run() {
 			}else if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
                 SDL_GetMouseState(&posx,
                          &posy);
-				Pacman->setPosition(posx,posy);
+                auto P = B->GetCellForXAndY(posx,posy);
+                if (P.OnGrid){
+				    Pacman->setPosition(posx,posy);
+                }
                 SDL_Log("Mouse Button 1 (left) is pressed.");
                 cout<<"x:"<<posx<<" y:"<<posy<<endl;
+               
             }
 
 		}
