@@ -1,15 +1,19 @@
 #include "board.h"
 
  void Board::drawGrid(SDL2pp::Renderer &input,int width,int height) {
-            int w = width /15;
-            for (int i = 2; i < 13; ++i){
-                input.DrawLine(w * i,w,w * i,w * 8);
-            }
+            int w = width /17;
+			auto startingPixelLeft = width /5;
+			auto endingPixelRight =  startingPixelLeft + (w*10);//width - startingPixelLeft;
+			auto startingPixelTop = height / 5;
 
-            for(int i = w; i <= height; i = i + w){
-                input.DrawLine(w*2,i,12 * w,i);
-            }
+			for(auto i = 0; i <= 7; ++i) {
+				// input.DrawLine(w + i * startingPixelLeft,startingPixelLeft * 10,w * i,startingPixelLeft);
+				input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
+			}
 
+			for(auto i = 0; i <=10; ++i){
+				input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
+			}
         }
 
 void Board::drawCircle(SDL2pp::Renderer &input, int x,int y,int radius) {
