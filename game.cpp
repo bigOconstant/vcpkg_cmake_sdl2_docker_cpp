@@ -44,7 +44,16 @@ void Game::run() {
 				}else if(e.key.keysym.sym == SDLK_a) {
 					std::cout<<ms<<endl;
 				}
-			}
+			}else if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
+                int x = 0;
+                int y = 0;
+                SDL_GetMouseState(&x,
+                         &y);
+
+                SDL_Log("Mouse Button 1 (left) is pressed.");
+                cout<<"x:"<<x<<" y:"<<y<<endl;
+            }
+
 		}
 
 			auto ticks = SDL_GetTicks();
