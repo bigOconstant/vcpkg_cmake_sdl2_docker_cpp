@@ -1,7 +1,7 @@
 
 
 #include <SDL2pp/SDL2pp.hh>
-
+#include "primitives.h"
 struct Cell {
     bool north;
     bool south;
@@ -44,6 +44,8 @@ class Board {
             delete board;
         }
         
-        void drawGrid(SDL2pp::Renderer &input,int width,int height);
+        void drawGrid(SDL2pp::Renderer &input);
         Point GetCellForXAndY(int x, int y);
+        void drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness,Primitives::Direction direction);
+
 };

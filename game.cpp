@@ -89,7 +89,7 @@ void Game::run() {
 			Pacman->draw(renderer);
 			//B->drawCircle(renderer,posx,posy,((width /15)/2)-10);
 			renderer.SetDrawColor(c);
-			B->drawGrid(renderer, width,height);
+			B->drawGrid(renderer);
 			
 			auto ticks = SDL_GetTicks();
 			// if ((ticks - start) > 50){
