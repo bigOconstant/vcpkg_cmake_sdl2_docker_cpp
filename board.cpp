@@ -1,5 +1,6 @@
 #include "board.h"
 void Board::SetLevelBarriers(){
+
 	board[0][0].west = true;
 	board[1][0].west = true;
 	board[2][0].west = true;
@@ -43,6 +44,35 @@ void Board::SetLevelBarriers(){
 	board[5][1].south = true;
 	board[5][2].south = true;
 
+	board[4][1].east = true;
+	board[4][2].south = true;
+
+	// board[3][5].east = true;
+	// board[3][6].east = true;
+
+	board[5][3].east = true;
+	board[6][3].east = true;
+
+	board[4][4].east = true;
+	board[5][4].east = true;
+
+	board[5][5].east = true;
+	board[6][5].east = true;
+
+	board[4][8].east = true;
+	board[5][8].east = true;
+	board[5][8].south = true;
+	board[5][7].south = true;
+
+
+	board[4][7].east = true;
+	board[4][7].south = true;
+
+	board[3][4].west = true;
+	board[3][4].south = true;
+
+	board[3][5].south = true;
+	board[3][5].east = true;
 
 	for(int i = 0; i < columnCount; ++i){
         board[0][i].north = true;
@@ -68,16 +98,13 @@ void Board::SetLevelBarriers(){
 			SDL2pp::Color white = SDL2pp::Color(255,255,255);
 			input.SetDrawColor(white);
 
-			// for(auto i = 0; i <= 7; ++i) {
-			// 	// input.DrawLine(w + i * startingPixelLeft,startingPixelLeft * 10,w * i,startingPixelLeft);
-			// 	input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
-			// 	SDL2pp::Color c = SDL2pp::Color(0,0,0);
-			
-			// }
+			for(auto i = 0; i <= 7; ++i) {
+				input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
+			}
 
-			// for(auto i = 0; i <=10; ++i){
-			// 	input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
-			// }
+			for(auto i = 0; i <=10; ++i){
+				input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
+			}
 
 			drawboarders(input);
         };
@@ -185,17 +212,30 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 	auto xmapped = xIn - startingPixelLeft;
 	auto ymapped = yIn - startingPixelTop;
 
-	point.row = xmapped / w;
-	point.col = ymapped / w;
+	point.row = ymapped / w;
+	point.col = xmapped / w;
 
-	if(point.row > 9){
+	if(point.row > 6){
 		point.OnGrid = false;
 		return point;
 	}
-	if(point.col > 6){
+	if(point.col > 9){
 		point.OnGrid = false;
 		return point;
 	}
 	point.OnGrid = true;
 	return point;
  };
+
+//Todo Not Finished
+ Primitives::Location Board::getMidPointOfCell(int row,int col){
+	Primitives::Location location;
+	location.x = 0;
+	location.y = 0;
+
+	int w = width /17;
+	auto startingPixelLeft = width /5;
+	auto startingPixelTop = height / 5;
+
+	return location;
+ }

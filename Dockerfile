@@ -30,6 +30,7 @@ RUN /vcpkg/vcpkg install sdl2pp
 RUN /vcpkg/vcpkg install sdl2-mixer
 RUN /vcpkg/vcpkg install sdl2-ttf
 RUN /vcpkg/vcpkg install sdl2-image
+RUN /vcpkg/vcpkg install sdl2-gfx
 
 
 # Create local user to avoid file permission issues

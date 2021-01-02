@@ -46,6 +46,7 @@ class Board {
         }
 
         void SetLevelBarriers();
+        Primitives::Location getMidPointOfCell(int row,int col);
         void drawGrid(SDL2pp::Renderer &input);
         void drawboarders(SDL2pp::Renderer &input);
         Point GetCellForXAndY(int x, int y);

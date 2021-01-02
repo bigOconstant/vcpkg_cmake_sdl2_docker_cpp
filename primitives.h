@@ -12,6 +12,11 @@ namespace Primitives {
         right = 4 
     };
 
+    struct Location{
+        int x;
+        int y;
+    };
+
 
     void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius); 
 }

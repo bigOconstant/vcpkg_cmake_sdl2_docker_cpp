@@ -1,5 +1,6 @@
 #include "game.h"
 #include "player.h"
+ #include "SDL2_gfxPrimitives.h" 
 //#include "iostream"
 
 Game::Game(){
@@ -64,7 +65,7 @@ void Game::run() {
                 if (P.OnGrid){
 				    Pacman->setPosition(posx,posy);
                 }
-                SDL_Log("Mouse Button 1 (left) is pressed.");
+                cout<<"cell row:"<<P.row<< " cell col:"<<P.col<<endl;
                 cout<<"x:"<<posx<<" y:"<<posy<<endl;
                
             }
@@ -104,6 +105,8 @@ void Game::run() {
 
 			// Show rendered frame
 			
+			 
+			 int result = filledEllipseColor(renderer.Get(), 100, 100, 50,100, 0xFF0000FF);
 			renderer.Present();
 			height = window.GetHeight();
 			width = window.GetWidth();
