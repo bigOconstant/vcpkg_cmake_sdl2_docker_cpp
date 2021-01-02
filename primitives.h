@@ -4,6 +4,12 @@
 
 #include <SDL2pp/SDL2pp.hh>
 
+/*
+
+Primitives is to be a mapper for SDL2_gfxPrimitives to cpp functions that use SDLPP types instead of the default sdl2 types.
+
+*/
+
 namespace Primitives {
     enum class Direction { 
         up = 1,
@@ -18,7 +24,10 @@ namespace Primitives {
     };
 
 
-    void drawCircle(SDL2pp::Renderer &input, int x,int y,int radius); 
+    void drawSmoothCircle(SDL2pp::Renderer &input, int x,int y,int radius,SDL2pp::Color color);
+    void filledCircleRGBA(SDL2pp::Renderer &input, int x,int y,int radius,SDL2pp::Color color);
+    void filledPieRGBA(SDL2pp::Renderer &input,Sint16 x, Sint16 y, Sint16 rad, Sint16 start, Sint16 end, SDL2pp::Color color);
+ 
 }
 
 #endif

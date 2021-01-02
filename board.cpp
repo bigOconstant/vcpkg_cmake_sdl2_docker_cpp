@@ -98,13 +98,13 @@ void Board::SetLevelBarriers(){
 			SDL2pp::Color white = SDL2pp::Color(255,255,255);
 			input.SetDrawColor(white);
 
-			for(auto i = 0; i <= 7; ++i) {
-				input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
-			}
+			// for(auto i = 0; i <= 7; ++i) {
+			// 	input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
+			// }
 
-			for(auto i = 0; i <=10; ++i){
-				input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
-			}
+			// for(auto i = 0; i <=10; ++i){
+			// 	input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
+			// }
 
 			drawboarders(input);
         };

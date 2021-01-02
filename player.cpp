@@ -8,8 +8,11 @@ Player::Player(int width) {
 };
 
 void Player::draw(SDL2pp::Renderer &input) {
-    //B->drawCircle(renderer,posx,posy,((width /15)/2)-10);
-    Primitives::drawCircle(input, posx, posy,radius);
+    SDL2pp::Color yellow = SDL2pp::Color(226,132,14);
+    Primitives::drawSmoothCircle(input,posx,posy,radius,yellow);
+    Primitives::filledCircleRGBA(input,posx+5,posy-12,radius/5,SDL2pp::Color(255,255,255));
+    Primitives::filledCircleRGBA(input,posx+5,posy-12,radius/7,SDL2pp::Color(0,0,0));
+    Primitives::filledPieRGBA(input,posx,posy,radius+2, -25, 30, SDL2pp::Color(0,0,0));
 };
 
 void Player::setPosition(int x,int y) {

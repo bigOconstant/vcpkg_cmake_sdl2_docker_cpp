@@ -1,6 +1,5 @@
 #include "game.h"
 #include "player.h"
- #include "SDL2_gfxPrimitives.h" 
 //#include "iostream"
 
 Game::Game(){
@@ -106,7 +105,7 @@ void Game::run() {
 			// Show rendered frame
 			
 			 
-			 int result = filledEllipseColor(renderer.Get(), 100, 100, 50,100, 0xFF0000FF);
+			
 			renderer.Present();
 			height = window.GetHeight();
 			width = window.GetWidth();
