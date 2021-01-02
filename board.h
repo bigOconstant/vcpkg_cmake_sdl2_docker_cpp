@@ -35,6 +35,7 @@ class Board {
             for(int i = 0; i < rowCount; ++i){
                 board[i] = new Cell[columnCount];
             }
+            SetLevelBarriers();
         }
 
         ~Board() {
@@ -43,8 +44,10 @@ class Board {
             }
             delete board;
         }
-        
+
+        void SetLevelBarriers();
         void drawGrid(SDL2pp::Renderer &input);
+        void drawboarders(SDL2pp::Renderer &input);
         Point GetCellForXAndY(int x, int y);
         void drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness,Primitives::Direction direction);
 

@@ -3,10 +3,10 @@
 //#include "iostream"
 
 Game::Game(){
-    // width = 768;
-    // height = 480;
-      width = 1280;
-     height = 720;
+    width = 768;
+    height = 480;
+    //   width = 1280;
+    //  height = 720;
     B = new Board(width,height);
 };
 Game::~Game(){

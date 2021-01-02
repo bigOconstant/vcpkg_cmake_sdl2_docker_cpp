@@ -1,5 +1,43 @@
 #include "board.h"
+void Board::SetLevelBarriers(){
+	board[0][0].west = true;
+	board[1][0].west = true;
+	board[2][0].west = true;
 
+	board[2][0].south = true;
+	board[4][0].north = true;
+
+	board[4][0].west = true;
+	board[5][0].west = true;
+	board[6][0].west = true;
+
+	board[1][1].north = true;
+	board[1][2].north = true;
+
+	board[1][4].north = true;
+	board[1][5].north = true;
+
+	board[1][7].north = true;
+	board[1][8].north = true;
+
+	board[2][1].north = true;
+	board[2][2].north = true;
+
+	board[2][4].north = true;
+	board[2][5].north = true;
+
+	board[2][7].north = true;
+	board[2][8].north = true;
+
+	board[2][1].east = true;
+	board[2][2].west = true;
+
+	board[2][7].east = true;
+	board[2][8].west = true;
+
+
+
+}
  void Board::drawGrid(SDL2pp::Renderer &input) {
             int w = width /17;
 			auto startingPixelLeft = width /5;
@@ -9,20 +47,39 @@
 			SDL2pp::Color white = SDL2pp::Color(255,255,255);
 			input.SetDrawColor(white);
 
-			for(auto i = 0; i <= 7; ++i) {
-				// input.DrawLine(w + i * startingPixelLeft,startingPixelLeft * 10,w * i,startingPixelLeft);
-				input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
-				SDL2pp::Color c = SDL2pp::Color(0,0,0);
+			// for(auto i = 0; i <= 7; ++i) {
+			// 	// input.DrawLine(w + i * startingPixelLeft,startingPixelLeft * 10,w * i,startingPixelLeft);
+			// 	input.DrawLine(startingPixelLeft,(i * w)+startingPixelTop ,endingPixelRight,(i*w)+startingPixelTop);
+			// 	SDL2pp::Color c = SDL2pp::Color(0,0,0);
 			
-			}
+			// }
 
-			for(auto i = 0; i <=10; ++i){
-				input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
-			}
+			// for(auto i = 0; i <=10; ++i){
+			// 	input.DrawLine(startingPixelLeft+(i*w),startingPixelTop,startingPixelLeft+(i*w),(7*w)+startingPixelTop);
+			// }
 
-			drawSinglecell(input,2,2,1,Primitives::Direction::down);
-			drawSinglecell(input,2,2,1,Primitives::Direction::up);
+			drawboarders(input);
         };
+
+void Board::drawboarders(SDL2pp::Renderer &input){
+	 for(int i = 0; i < rowCount; ++i){
+        for(int j = 0; j < columnCount; ++j){
+			if(board[i][j].west){
+				drawSinglecell(input,i,j,2,Primitives::Direction::left);
+			}
+			if(board[i][j].east){
+				drawSinglecell(input,i,j,2,Primitives::Direction::right);
+			}
+			if(board[i][j].south){
+				drawSinglecell(input,i,j,2,Primitives::Direction::down);
+			}
+			if(board[i][j].north){
+				drawSinglecell(input,i,j,2,Primitives::Direction::up);
+			}
+		}           
+	 }
+}
+
 		
 void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness,Primitives::Direction direction){
 	int w = width /17;
@@ -30,8 +87,8 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 	auto startingPixelTop = height / 5;
 
 	// Draw Top Line
-	SDL2pp::Color red = SDL2pp::Color(176,24,24);
-	input.SetDrawColor(red);
+	SDL2pp::Color blue = SDL2pp::Color(21,8,76);
+	input.SetDrawColor(blue);
 
 	switch(direction)
 	{
