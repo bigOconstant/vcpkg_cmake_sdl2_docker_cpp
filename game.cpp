@@ -3,10 +3,10 @@
 //#include "iostream"
 
 Game::Game(){
-    width = 768;
-    height = 480;
-    //   width = 1280;
-    //  height = 720;
+    // width = 768;
+    // height = 480;
+      width = 1280;
+     height = 720;
     B = new Board(width,height);
 };
 Game::~Game(){
@@ -17,6 +17,7 @@ void Game::run() {
     using std::cout;
     using std::endl;
    // using namespace SDL2pp;
+   Player *Pacman = new Player(width);
 
     cout<<"Running game"<<endl;
     try {
@@ -31,7 +32,7 @@ void Game::run() {
 			//SDL_WINDOW_FULLSCREEN);
 
 	
-	Player *Pacman = new Player(width);
+	
     SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 	
 	auto running = true;
@@ -116,4 +117,5 @@ void Game::run() {
         // If case of error, print it and exit with error
         std::cerr << e.what() << std::endl;
     }
+	delete Pacman;
 }

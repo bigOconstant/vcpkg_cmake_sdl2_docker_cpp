@@ -2,7 +2,7 @@
 
 Player::Player(int width) {
     
-    radius = ((width/15)/2) -10;
+    radius = ((width/15)/2) -20;
     posx = radius;
     posy = radius;
 };

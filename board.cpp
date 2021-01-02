@@ -4,8 +4,8 @@ void Board::SetLevelBarriers(){
 	board[1][0].west = true;
 	board[2][0].west = true;
 
-	board[2][0].south = true;
-	board[4][0].north = true;
+	//board[2][0].south = true;
+	//board[4][0].north = true;
 
 	board[4][0].west = true;
 	board[5][0].west = true;
@@ -35,6 +35,27 @@ void Board::SetLevelBarriers(){
 	board[2][7].east = true;
 	board[2][8].west = true;
 
+
+	//
+	board[4][0].east = true;
+	board[5][0].east = true;
+
+	board[5][1].south = true;
+	board[5][2].south = true;
+
+
+	for(int i = 0; i < columnCount; ++i){
+        board[0][i].north = true;
+ 	}
+	 for(int i = 0; i < columnCount; ++i){
+        board[rowCount -1][i].south = true;
+ 	}
+
+	 for(int i = 0; i < rowCount; ++i) {
+		 if(i != 3){
+        	board[i][columnCount -1].east = true;
+		 }
+ 	}
 
 
 }
@@ -87,7 +108,7 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 	auto startingPixelTop = height / 5;
 
 	// Draw Top Line
-	SDL2pp::Color blue = SDL2pp::Color(21,8,76);
+	SDL2pp::Color blue = SDL2pp::Color(65,75,186);
 	input.SetDrawColor(blue);
 
 	switch(direction)
