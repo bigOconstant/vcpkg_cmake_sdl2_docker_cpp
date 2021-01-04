@@ -64,10 +64,3 @@ void Player::drawdown(SDL2pp::Renderer &input){
    Primitives::filledPieRGBA(input,posx,posy,radius+2,45,135, SDL2pp::Color(0,0,0));
 };
 
-
-
-
-void Player::setPosition(int x,int y) {
-    posx = x;
-    posy = y;
-};

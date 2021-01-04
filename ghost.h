@@ -1,9 +1,8 @@
 #include <SDL2pp/SDL2pp.hh>
 #include "primitives.h"
-class Ghost {
+#include "entity.h"
+class Ghost: public Entity {
     private:
-        int posx;
-        int posy;
         int rectwidth;
         int rectHeight;        
     public:
@@ -12,5 +11,4 @@ class Ghost {
         Primitives::Direction direction;
         void draw(SDL2pp::Renderer &input);
 
-        void setPosition(int x,int y);
 };

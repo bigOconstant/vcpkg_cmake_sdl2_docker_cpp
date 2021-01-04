@@ -31,8 +31,3 @@ void Ghost::draw(SDL2pp::Renderer &input) {
     Primitives::filledEllipseRGBA(input,posx-7,posy-4,4,6,SDL2pp::Color(255,255,255));
     Primitives::filledCircleRGBA(input,posx-7,posy-4,3,SDL2pp::Color(0,0,0));
 };
-
-void Ghost::setPosition(int x,int y) {
-    posx = x;
-    posy = y;
-};

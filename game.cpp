@@ -1,8 +1,10 @@
 #include "game.h"
 #include "player.h"
 #include "ghost.h"
+#include "entity.h"
 #include "primitives.h"
 #include <SDL2pp/SDL2pp.hh>
+#include <vector>
 
 //#include "iostream"
 
@@ -20,9 +22,17 @@ Game::~Game(){
 void Game::run() {
     using std::cout;
     using std::endl;
+
+	//std::vector<Entity*> entities;
    // using namespace SDL2pp;
 	Player *Pacman = new Player(width);
 	Ghost *ghost = new Ghost(width);
+
+	// entities.push_back(new Player(width));
+	// entities.push_back(new Ghost(width));
+
+
+
 	auto point = B->getMidPointOfCell(3,0);
 	Pacman->setPosition(point.x,point.y);
 
