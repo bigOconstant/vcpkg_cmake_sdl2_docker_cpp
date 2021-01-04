@@ -183,14 +183,7 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 		};
 	}	
 	
-	
 
-	
-
-	
-
-	
-	
 }
 
  Point Board::GetCellForXAndY(int xIn, int yIn) {
@@ -236,6 +229,12 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 	int w = width /17;
 	auto startingPixelLeft = width /5;
 	auto startingPixelTop = height / 5;
+
+	auto midy = startingPixelTop + row * w +  (w/2);
+	auto midx = startingPixelLeft + col * w + (w/2);
+
+	location.x = midx;
+	location.y = midy;
 
 	return location;
  }

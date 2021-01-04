@@ -21,7 +21,8 @@ void Game::run() {
     using std::endl;
    // using namespace SDL2pp;
    Player *Pacman = new Player(width);
-
+	auto point = B->getMidPointOfCell(3,0);
+	Pacman->setPosition(point.x,point.y);
     cout<<"Running game"<<endl;
     try {
 
