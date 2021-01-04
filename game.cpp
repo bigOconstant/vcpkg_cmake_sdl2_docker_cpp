@@ -1,5 +1,6 @@
 #include "game.h"
 #include "player.h"
+#include "ghost.h"
 #include "primitives.h"
 #include <SDL2pp/SDL2pp.hh>
 
@@ -20,9 +21,13 @@ void Game::run() {
     using std::cout;
     using std::endl;
    // using namespace SDL2pp;
-   Player *Pacman = new Player(width);
+	Player *Pacman = new Player(width);
+	Ghost *ghost = new Ghost(width);
 	auto point = B->getMidPointOfCell(3,0);
 	Pacman->setPosition(point.x,point.y);
+
+	point = B->getMidPointOfCell(3,4);
+	ghost->setPosition(point.x,point.y);
     cout<<"Running game"<<endl;
     try {
 
@@ -90,6 +95,7 @@ void Game::run() {
 			c = SDL2pp::Color(255,255,255);
 			renderer.SetDrawColor(c);
 			Pacman->draw(renderer);
+			ghost->draw(renderer);
 			//B->drawCircle(renderer,posx,posy,((width /15)/2)-10);
 			renderer.SetDrawColor(c);
 			B->drawGrid(renderer);

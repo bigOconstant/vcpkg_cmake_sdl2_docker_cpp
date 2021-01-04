@@ -127,7 +127,6 @@ void Board::drawboarders(SDL2pp::Renderer &input){
 		}           
 	 }
 }
-
 		
 void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness,Primitives::Direction direction){
 	int w = width /17;
@@ -183,7 +182,6 @@ void Board::drawSinglecell(SDL2pp::Renderer &input,int row,int col,int thickness
 		};
 	}	
 	
-
 }
 
  Point Board::GetCellForXAndY(int xIn, int yIn) {

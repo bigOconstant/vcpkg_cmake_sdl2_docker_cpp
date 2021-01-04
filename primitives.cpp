@@ -36,3 +36,7 @@
         filledPieRGBA(input.Get(), x,y,rad, start, end, color.r,color.g,color.b,color.a);
     }
 
+    void Primitives::filledEllipseRGBA(SDL2pp::Renderer &input, Sint16 x, Sint16 y, Sint16 rx, Sint16 ry,SDL2pp::Color color){
+        filledEllipseRGBA(input.Get(),x,y,rx,ry,color.r,color.g,color.b,color.a);
+    }
+
