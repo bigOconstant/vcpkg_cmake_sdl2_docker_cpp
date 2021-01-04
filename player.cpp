@@ -12,7 +12,7 @@ Player::Player(int width) {
 
 
 void Player::draw(SDL2pp::Renderer &input) {
-    SDL2pp::Color yellow = SDL2pp::Color(226,132,14);
+    SDL2pp::Color yellow = SDL2pp::Color(194,198,0);
     Primitives::drawSmoothCircle(input,posx,posy,radius,yellow);
     switch (direction)
     {
