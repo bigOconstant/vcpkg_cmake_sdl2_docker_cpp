@@ -1,5 +1,8 @@
 #include "game.h"
 #include "player.h"
+#include "primitives.h"
+#include <SDL2pp/SDL2pp.hh>
+
 //#include "iostream"
 
 Game::Game(){
@@ -30,8 +33,6 @@ void Game::run() {
 			width, height,
 			SDL_WINDOW_RESIZABLE);
 			//SDL_WINDOW_FULLSCREEN);
-
-	
 	
     SDL2pp::Renderer renderer(window, -1, SDL_RENDERER_ACCELERATED);
 	
@@ -52,10 +53,19 @@ void Game::run() {
 			}
 			else if (e.type == SDL_KEYDOWN ){
 				if(e.key.keysym.sym == SDLK_ESCAPE){
-					cout<<"blahttt"<<endl;
+					cout<<"exiting"<<endl;
 					running = false;
-				}else if(e.key.keysym.sym == SDLK_a) {
-					std::cout<<ms<<endl;
+				}else if(e.key.keysym.sym == SDLK_UP) {
+					Pacman->direction = Primitives::Direction::up;
+				}
+				else if(e.key.keysym.sym == SDLK_LEFT) {
+					Pacman->direction = Primitives::Direction::left;
+				}
+				else if(e.key.keysym.sym == SDLK_RIGHT) {
+					Pacman->direction = Primitives::Direction::right;
+				}
+				else if(e.key.keysym.sym == SDLK_DOWN) {
+					Pacman->direction = Primitives::Direction::down;
 				}
 			}else if (SDL_GetMouseState(NULL, NULL) & SDL_BUTTON(SDL_BUTTON_LEFT)) {
                 SDL_GetMouseState(&posx,
@@ -71,15 +81,6 @@ void Game::run() {
 
 		}
 
-			// auto ticks = SDL_GetTicks();
-			// if ((ticks - start) > 50){
-			// 	posx = posx +mover;
-			// 	start = ticks;
-			// 	if (posx > 720 || posx <0) {
-			// 		mover = mover * -1;
-					
-			// 	}
-			// }
 
 			SDL2pp::Color c = SDL2pp::Color(0,0,0);
 			renderer.SetDrawColor(c);
@@ -93,28 +94,13 @@ void Game::run() {
 			B->drawGrid(renderer);
 			
 			auto ticks = SDL_GetTicks();
-			// if ((ticks - start) > 50){
-			// 	posx = posx +mover;
-			// 	start = ticks;
-			// 	if (posx > 720 || posx <0) {
-			// 		mover = mover * -1;
-					
-			// 	}
-			// }th, height);
-
-			// Show rendered frame
-			
-			 
 			
 			renderer.Present();
 			height = window.GetHeight();
 			width = window.GetWidth();
-			
-			
-	 
+	
 	}
-	// 5 second delay
-	//SDL_Delay(10000);
+
     } catch (std::exception& e) {
         // If case of error, print it and exit with error
         std::cerr << e.what() << std::endl;
